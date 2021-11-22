@@ -4,7 +4,7 @@ class prosody::service(
   Optional[String]  $restart   = undef,
 ) {
 
-  if $prosody::daemonize {
+  if pick($prosody::manage_service, $prosody::daemonize) {
     service { 'prosody':
       ensure    => running,
       enable    => true,

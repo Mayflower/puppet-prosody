@@ -43,6 +43,7 @@ class prosody (
   Optional[Stdlib::Absolutepath] $ssl_cert = undef,
   Optional[Stdlib::Absolutepath] $ssl_key = undef,
   Optional[String] $ssl_protocol = undef,
+  Optional[Boolean] $manage_service = undef,
 ) {
   if ($community_modules != []) {
     class { 'prosody::community_modules':

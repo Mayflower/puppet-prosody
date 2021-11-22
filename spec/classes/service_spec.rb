@@ -42,6 +42,31 @@ describe 'prosody::service' do
 
         it_behaves_like 'prosody::service with defaults'
       end
+
+      context 'with manage=> true' do
+        let(:pre_condition) do
+          'class {"prosody":
+          manage_service => true
+        }'
+        end
+
+        it {
+          is_expected.to contain_service('prosody')
+            .with_ensure('running')
+            .with_enable(true)
+        }
+      end
+      context 'with manage => false' do
+        let(:pre_condition) do
+          'class {"prosody":
+          manage_service => false
+        }'
+        end
+
+        it {
+          is_expected.not_to contain_service('prosody')
+        }
+      end
     end
   end
 end
