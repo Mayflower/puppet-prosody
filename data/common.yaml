@@ -65,3 +65,6 @@ prosody::community_modules::ensure: present
 prosody::community_modules::path: /var/lib/prosody/modules
 prosody::community_modules::source: https://hg.prosody.im/prosody-modules/
 prosody::community_modules::type: hg
+
+prosody::service::hasstatus: false
+prosody::service::restart: '/usr/bin/prosodyctl reload'
