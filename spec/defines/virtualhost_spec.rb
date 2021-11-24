@@ -116,7 +116,7 @@ describe 'prosody::virtualhost' do
           is_expected.to contain_file(path_avail). \
             with_content(%r{^Component "comp1" "muc"$}). \
             with_content(%r{^  bo = true;$}). \
-            with_content(%r{^  arr = { "one"; "two" };$}).\
+            with_content(%r{^  arr = { "one", "two" };$}).\
             with_content(%r{^  str = "string";$})
         }
       end
