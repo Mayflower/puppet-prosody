@@ -38,11 +38,12 @@ describe 'prosody' do
       end
 
       context 'with custom options' do
-        let(:params) { { custom_options: { 'foo' => 'bar', 'baz' => 'quux' } } }
+        let(:params) { { custom_options: { 'foo' => 'bar', 'baz' => 'quux', 'int' => 42 } } }
 
         it {
           is_expected.to contain_file('/etc/prosody/prosody.cfg.lua'). \
-            with_content(%r{^foo = "bar"$}, %r{^baz = "quux"$})
+            with_content(%r{^foo = "bar"$}, %r{^baz = "quux"$}).\
+            with_content(%r{^int = 42$})
         }
       end
 
