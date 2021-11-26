@@ -169,7 +169,7 @@ def print_recursive(object, indentation = 0)
     '{ "' + object.join('"; "') + '" }'
   when Hash
     "{\n" + ' ' * (indentation + 2) + object.map {|k,v| "#{k} = " + print_recursive(v, indentation + 2)}.join(";\n" + ' ' * (indentation + 2)) + ";\n" + (' ' * indentation) + '}'
-  when TrueClass, FalseClass
+  when TrueClass, FalseClass, Integer
     object.to_s
   else
     '"' + object.to_s + '"'
