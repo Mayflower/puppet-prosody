@@ -166,7 +166,7 @@ s2s_secure_domains = {
 def print_recursive(object, indentation = 0)
   case object
   when Array
-    '{ "' + object.join('"; "') + '" }'
+    "{\n" + ' ' * (indentation + 2) + object.map {|v| print_recursive(v, indentation + 2)}.join('; ') + "\n" + (' ' * indentation) + '}'
   when Hash
     "{\n" + ' ' * (indentation + 2) + object.map {|k,v| "#{k} = " + print_recursive(v, indentation + 2)}.join(";\n" + ' ' * (indentation + 2)) + ";\n" + (' ' * indentation) + '}'
   when TrueClass, FalseClass

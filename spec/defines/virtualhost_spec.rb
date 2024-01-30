@@ -121,6 +121,15 @@ describe 'prosody::virtualhost' do
         }
       end
 
+      context 'with nested array and hash custom options' do
+        let(:params) { { custom_options: { external_services: [{ 'type' => 'turns', 'algorithm' => 'turn' }] } } }
+
+        it {
+          is_expected.to contain_file(path_avail). \
+            with_content(%r#^external_services = {\n  {\n    type = "turns";\n    algorithm = "turn";\n  }\n}#)
+        }
+      end
+
       context 'with disco items' do
         let(:params) { { disco_items: %w[foo bar] } }
 
