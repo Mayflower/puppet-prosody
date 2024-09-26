@@ -1,0 +1,5 @@
+---
+# Defaults for Debian os family (eg. Debian, Ubuntu etc)
+
+prosody::service::hasstatus: ~
+prosody::service::restart: ~
